@@ -1,0 +1,48 @@
+.section {
+    height: 100vh;
+    width: 100%;
+    background-image: url("../../assets/max-bohme-oKdaj4Yol6k-unsplash.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: self-start;
+    justify-content: flex-start;
+    color: #f2f4f7;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+.hero {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 80px 20px 20px 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+}
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    text-align: left;
+    color: #f0f0f0;
+}
+
+.description {
+    font-size: 16px;
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+    text-align: left;
+}

@@ -1,0 +1,97 @@
+.cardItem {
+    border: 1px solid rgba(16, 24, 40, 0.2);
+    border-radius: 20px;
+}
+
+.card {
+    display: flex;
+    padding: 24px;
+    gap: 24px;
+}
+
+.wrapper {
+    width: 290px;
+    height: 310px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.wrapper>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
+}
+
+.cardInfo {
+    width: 526px;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.priceTitle {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.favorRew {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.favoriteDiv {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.reviews {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+
+.descr {
+    margin-bottom: 24px;
+}
+
+.categories {
+    margin-bottom: 24px;
+}
+
+.categoriesList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.categoriesItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background-color: #f2f4f7;
+    border-radius: 100px;
+}
+
+.btn {
+    padding: 16px 60px;
+    border-radius: 40px;
+    background-color: #E44848;
+    transition: background-color 0.5s ease;
+    color: #ffffff;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.btn:hover {
+    background-color: #d84343;
+}

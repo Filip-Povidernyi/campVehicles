@@ -1,0 +1,131 @@
+.filterForm {
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+}
+
+.location {
+    display: flex;
+    flex-direction: column;
+    color: rgba(16, 24, 40, 0.6);
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 32px;
+}
+
+.inputDiv {
+    display: flex;
+    padding-top: 8px;
+    position: relative;
+}
+
+.mappin {
+    position: absolute;
+    fill: transparent;
+    top: 22px;
+    left: 18px;
+}
+
+input {
+    padding: 18px 18px 18px 44px;
+    outline: none;
+    border: none;
+    background-color: #F7F7F7;
+    border-radius: 10px;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    color: rgba(16, 24, 40, 0.6);
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 14px;
+}
+
+.filterDiv > h2 {
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(16, 24, 40, 0.1);
+    margin-bottom: 24px;
+}
+
+.equipList {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 8px;
+    justify-content: flex-start;
+}
+
+.filterChb {
+    height: 95px;
+    flex-basis: calc((100% - 20px)/3);
+}
+
+.checkbox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 17px 12px;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(16, 24, 40, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: center;
+    color: #101828;
+}
+
+.checkbox:hover,
+.checkbox:has(input:checked) {
+    border-color: #E44848;
+}
+
+.typeList {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 64px;
+}
+
+.filterRadio {
+    height: 95px;
+    flex-basis: calc((100% - 20px)/3);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button {
+    padding: 16px 60px;
+    border-radius: 40px;
+    background-color: #E44848;
+    transition: background-color 0.5s ease;
+    color: #ffffff;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.buttonReset {
+    padding: 16px 40px;
+    border-radius: 40px;
+    background-color: transparent;
+    transition: background-color 0.5s ease;
+    color: #101828;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid rgba(71, 84, 103, 0.2);
+}
+
+.button:hover {
+    background-color: #d84343;
+}
+
+.buttonReset:hover {
+    border-color: #d84343;
+}

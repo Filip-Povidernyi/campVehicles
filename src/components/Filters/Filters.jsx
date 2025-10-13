@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import css from './style.module.css';
 import { useState } from 'react';
 import { setFilter } from '../../redux/filterSlice';
@@ -6,11 +6,15 @@ import { nanoid } from "nanoid";
 import Icon from '../Icon/Icon';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import { setFilteredItems } from '../../redux/vehiclesSlice';
+import { selectAllVehicles } from '../../redux/selectors';
+import { fetchAllVehicles } from '../../api/fetchVehicles';
 
 
 const Filters = () => {
 
     const dispatch = useDispatch();
+    const data = useSelector(selectAllVehicles);
     const [location, setLocation] = useState('');
         const [equipment, setEquipment] = useState({
             airConditioner: false,
@@ -49,13 +53,42 @@ const Filters = () => {
                 shower: false,
             });
             setForm('');
+            dispatch(fetchAllVehicles());
         };
     
         const handlerSubmit = (evt) => {
             evt.preventDefault();
+            const filteredData = data.filter(item => {
+            const matchLocation = location
+                ? item.location.toLowerCase().includes(location.toLowerCase())
+                : true;
+            const matchForm = form ? item.form === form : true;
+
+            const matchEquipment = Object.entries(equipment).every(([key, value]) => {
+                if (!value) return true;
+                switch (key) {
+                    case 'airConditioner':
+                        return item.AC;
+                    case 'transmission':
+                        return item.transmission === 'automatic';
+                    case 'kitchen':
+                        return item.kitchen;
+                    case 'TV':
+                        return item.TV;
+                    case 'shower':
+                        return item.bathroom;
+                    default:
+                        return true;
+                }
+            });
+
+            return matchLocation && matchForm && matchEquipment;
+            });
+
+            dispatch(setFilteredItems(filteredData));
             dispatch(setFilter({ location, equipment, form }));
-            resetForm();
         };
+
     
         const equipments = [
         { icon:  "icon-wind", name: "airConditioner", value: "AC", fill: '#101828' },
@@ -66,9 +99,9 @@ const Filters = () => {
     ];
         
     const typesVans = [
-        { icon: "icon-smallCamper", name: "form", value: "Van" },
-        { icon: "icon-middleCamper", name: "form", value: "Fully Integrated" },
-        { icon: "icon-bigCamper", name: "form", value: "Alcove" },
+        { icon: "icon-smallCamper", name: "Van", value: "van" },
+        { icon: "icon-middleCamper", name: "Fully Integrated", value: "fullyIntegrated" },
+        { icon: "icon-bigCamper", name: "Alcove", value: "alcove" },
     ];
 
     return (
@@ -96,7 +129,7 @@ const Filters = () => {
                 <label className={css.filter}>
                     Filter
                     <div className={css.filterDiv}>
-                        <h2>Vehicle equipment</h2>
+                        <h2 className={css.header}>Vehicle equipment</h2>
                         <ul className={css.equipList}>
                             {equipments.map(equip => (
                                 <li key={nanoid()} className={css.filterChb}>
@@ -125,7 +158,7 @@ const Filters = () => {
                 </div>
                 </label>
                 <div className={css.filterDiv}>
-                    <h2>Vehicle type</h2>
+                    <h2 className={css.header}>Vehicle type</h2>
                     <ul className={css.typeList }>
                         {typesVans.map(type => (
                             <li key={nanoid()} className={css.filterRadio}>
@@ -139,14 +172,14 @@ const Filters = () => {
                                     />
                                     <Input
                                         className="visially-hidden"
-                                        name={type.name}
+                                        name='form'
                                         type='radio'
                                         value={type.value}
                                         checked={form === type.value}
                                         handleChange={handleChangeForm}
                                         id={type.value}
                                     />
-                                    {type.value}
+                                    {type.name}
                                 </label>
                             </li>
                         ))}

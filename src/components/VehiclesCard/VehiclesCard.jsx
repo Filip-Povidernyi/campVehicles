@@ -1,33 +1,31 @@
 import css from './style.module.css';
-import { nanoid } from '@reduxjs/toolkit';
 import Icon from '../Icon/Icon';
 import Button from '../Button/Button';
+import { useDispatch, useSelector} from 'react-redux';
+import { selectFavorites } from '../../redux/selectors';
+import { nanoid } from '@reduxjs/toolkit';
+import { toggleFavorite } from '../../redux/favoriteSlice';
+import { equipment } from './constants';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { setNav } from '../../redux/camperDetailsSlice';
 
 
+const VehiclesCard = ({ card, navId }) => {
 
-const VehiclesCard = ({ card }) => {
-    
-     const equipment = [
-        { icon: 'icon-Users', name: 'adults', title: 'adults', fill: 'transparent'},
-        { icon: 'icon-gearbox', name: 'transmission', title: '', fill: 'transparent'},
-        { icon: 'icon-wind', name: 'AC', title: 'AC', fill: '#101828'},
-        { icon: 'icon-tank', name: 'engine', title: '', fill: '#101828'},
-        { icon: 'icon-kitchen', name: 'kitchen', title: 'kitchen', fill: 'transparent'},
-        { icon: 'icon-bed', name: 'bads', title: 'beds', fill: 'transparent'},
-        { icon: 'icon-air-conditioner', name: 'conditioner', title: 'Air conditioner', fill: 'transparent'},
-        { icon: 'icon-cd', name: 'CD', title: 'CD', fill: 'transparent'},
-        { icon: 'icon-radio', name: 'radio', title: 'Radio', fill: 'transparent'},
-        { icon: 'icon-oven', name: 'hob', title: 'hob', fill: 'transparent'},
-        { icon: 'icon-toilet', name: 'toilet', title: 'Toilet', fill: 'transparent'},
-        { icon: 'icon-shower', name: 'bathroom', title: 'Shower', fill: 'transparent'},
-        { icon: 'icon-freezer', name: 'refrigerator', title: 'Freezer', fill: 'transparent'},
-        { icon: 'icon-gas', name: 'gas', title: 'Gas', fill: '#101828'},
-        { icon: 'icon-water', name: 'water', title: 'Water', fill: 'transparent'},
-        { icon: 'icon-microwave', name: 'microwave', title: 'Microwave', fill: 'transparent'}
-    ]
+    const dispatch = useDispatch();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const favorites = useSelector(selectFavorites);
+    const isFavorite = favorites?.some(fav => fav.id === card.id);
+
+    const openModal = (id) => {
+        dispatch(setNav(navId));
+        navigate(`/catalog/${id}/features`, { state: { background: location } });
+    };
 
     return (
-        <li key={nanoid()} className={css.cardItem}>
+        <li className={css.cardItem}>
             <div className={css.card}>
                 <div className={css.wrapper}>
                     <img src={card.gallery[0].original} alt={card.name} width='290px' height='310px' />
@@ -42,9 +40,10 @@ const VehiclesCard = ({ card }) => {
                                     className={css.heart}
                                     width={24}
                                     height={24}
-                                    fill='transparent'
-                                    stroke='#101828'
+                                    fill={isFavorite ? '#E44848' : 'transparent'}
+                                    stroke={isFavorite ? '#E44848' : '#101828'}
                                     iconName='icon-EmptyHeart'
+                                    handleClick={()=>dispatch(toggleFavorite(card))}
                                 />
                             </div>
                         </div>
@@ -91,7 +90,12 @@ const VehiclesCard = ({ card }) => {
                             </ul>
                         </div>
                         <div>
-                            <Button type="button" className={css.btn}>Show more</Button>
+                            <Button
+                                type="button"
+                                className={css.btn}
+                                handleClick={() => openModal(card.id)}>
+                                Show more
+                            </Button>
                         </div>
                     </div>
                 </div>

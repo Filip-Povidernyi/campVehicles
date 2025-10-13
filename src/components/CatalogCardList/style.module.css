@@ -3,3 +3,28 @@
     flex-direction: column;
     gap: 32px;
 }
+
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 888px;
+}
+
+.buttonReset {
+    padding: 16px 40px;
+    border-radius: 40px;
+    background-color: transparent;
+    transition: background-color 0.5s ease;
+    color: #101828;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid rgba(71, 84, 103, 0.2);
+}
+
+.buttonReset:hover {
+    border-color: #d84343;
+    color: #d84343;
+}

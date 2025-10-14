@@ -107,7 +107,7 @@ const Modal = () => {
                 <ul className={css.gallery}>
                 {details?.gallery.map((image, idx) => (
                   <div key={idx} className={css.wrapper}>
-                    <img src={image.original} alt={details.name} width='290px' height='310px'/>
+                    <img src={image.original} alt={details.name} width='290px' height='310px' loading="lazy"/>
                   </div>
                 ))}
                 </ul>

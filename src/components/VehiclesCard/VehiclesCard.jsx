@@ -30,7 +30,7 @@ const VehiclesCard = ({ card, navId }) => {
         <li className={css.cardItem}>
             <div className={css.card}>
                 <div className={css.wrapper}>
-                    <img src={card.gallery[0].original} alt={card.name} width='290px' height='310px' />
+                    <img src={card.gallery[0].original} alt={card.name} width='290px' height='310px' loading="lazy"/>
                 </div>
                 <div className={css.cardInfo}>
                     <div>

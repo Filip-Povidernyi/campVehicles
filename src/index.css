@@ -36,6 +36,7 @@ ul {
 
 img {
   display: block;
+  background-image: url('./assets/noImage.png');
 }
 
 button {

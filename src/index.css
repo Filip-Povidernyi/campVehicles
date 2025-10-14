@@ -1,4 +1,5 @@
 /* @import-normalize; bring in normalize.css styles */
+/* Removed Tailwind directives because build tool does not support them */
 
 body {
   background-color: #FFF;

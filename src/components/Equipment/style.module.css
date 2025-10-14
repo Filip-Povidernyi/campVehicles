@@ -1,0 +1,14 @@
+.categoriesList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.categoriesItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background-color: #f2f4f7;
+    border-radius: 100px;
+}

@@ -14,15 +14,22 @@
 .modal {
     display: flex;
     background-color: #fff;
-    /* height: 720px; */
-    /* max-width: 982px; */
     margin-top: 40px;
     margin-left: 229px;
     margin-right: 229px;
     padding: 40px;
+    margin: 40px 229px;
+    min-width: 982px;
     gap: 24px;
     border-radius: 20px;
     flex-direction: column;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.scrollArea {
+    max-height: 70vh;
+    overflow-y: auto;
 }
 
 .favorRew {
@@ -46,10 +53,6 @@
     justify-content: space-between;
     max-width: 982px;
     padding-bottom: 8px;
-}
-
-.priceRevContainer {
-    padding-bottom: 24px;
 }
 
 .close {
@@ -80,15 +83,21 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 24px;
-    gap: 16px;
 }
 
 .linksBar {
     display: flex;
     gap: 40px;
     border-bottom: 1px solid rgba(16, 24, 40, 0.2);
+    margin-top: 44px;
+    margin-bottom: 44px;
 }
 
 .linksBar > nav {
     padding-left: 0;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
 }

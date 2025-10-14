@@ -1,6 +1,7 @@
 .featRewCont {
     display: flex;
     flex-direction: column;
+    gap: 24px;
     max-width: 430px;
 }
 

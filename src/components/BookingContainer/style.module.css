@@ -1,0 +1,12 @@
+.bookingContainer {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(16, 24, 40, 0.2);
+    border-radius: 10px;
+    gap: 24px;
+}
+
+.bookTitle {
+    color: #475467;
+}

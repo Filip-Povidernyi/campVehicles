@@ -9,6 +9,7 @@ import { NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 
+
 const StyledLink = styled(NavLink)`
     color: #101828;
     padding-bottom: 24px;
@@ -39,15 +40,27 @@ const Modal = () => {
 
   }, [dispatch, id]);
 
-  
   const closeModal = () => navigate(`${navId}`);
 
-  console.log('details', details)
+  const onPressEsc = (evt) => {
+        if (evt.code === 'Escape') {
+            closeModal();
+        };
+    };
+
+    useEffect(() => {
+        document.documentElement.style.overflow = "hidden";
+        window.addEventListener('keydown', onPressEsc);
+        return () => {
+            document.documentElement.style.overflow = "auto";
+            window.removeEventListener('keydown', onPressEsc);
+        }
+    });
 
   return (
     <div className={css.overlay} onClick={closeModal}>
       {isLoading && !error && <Loader />}
-      {details &&
+      {details && !isLoading &&
         <div className={css.modal} onClick={(e)=>e.stopPropagation()}>
           <div>
             <div className={css.priceRevContainer}>
@@ -88,6 +101,8 @@ const Modal = () => {
                 <p className={css.priceTitle}>&#8364;{details.price}.00</p>
               </div>
             </div>
+          </div>
+          <div className={css.scrollArea}>
             <div>
                 <ul className={css.gallery}>
                 {details?.gallery.map((image, idx) => (
@@ -100,16 +115,16 @@ const Modal = () => {
             <div className={css.descr}>
               <p>{details.description}</p>
             </div>
-          </div>
-          <div>
-            <div className={css.linksBar}>
-              <nav>
-                <StyledLink to='features'>Features</StyledLink>
-                <StyledLink to='reviews'>Reviews</StyledLink>
-              </nav>
-            </div>
-            <div className={css.content}>
-              <Outlet />
+            <div>
+              <div className={css.linksBar}>
+                <nav>
+                  <StyledLink to='features'>Features</StyledLink>
+                  <StyledLink to='reviews'>Reviews</StyledLink>
+                </nav>
+              </div>
+              <div className={css.content}>
+                <Outlet context={details} />
+              </div>
             </div>
           </div>
       </div>}

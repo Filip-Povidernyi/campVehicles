@@ -1,6 +1,11 @@
-const Input = ({className, name, type, value, checked, handleChange, id, placeholder}) => {
+import React from "react";
+
+
+const Input = React.forwardRef(
+    ({ className, name, type, value, checked, handleChange, id, placeholder, ...rest }, ref) => {
     return (
         <input
+            ref={ref}
             className={className}
             name={name}
             type={type}
@@ -9,9 +14,10 @@ const Input = ({className, name, type, value, checked, handleChange, id, placeho
             onChange={handleChange}
             id={id}
             placeholder={placeholder}
+            {...rest}
         />
     );
-};
+});
 
 
 export default Input;

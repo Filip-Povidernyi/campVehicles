@@ -3,11 +3,11 @@ import Icon from '../Icon/Icon';
 import Button from '../Button/Button';
 import { useDispatch, useSelector} from 'react-redux';
 import { selectFavorites } from '../../redux/selectors';
-import { nanoid } from '@reduxjs/toolkit';
 import { toggleFavorite } from '../../redux/favoriteSlice';
-import { equipment } from './constants';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { setNav } from '../../redux/camperDetailsSlice';
+import Equipment from '../Equipment/Equipment';
+import { startTransition } from 'react';
 
 
 const VehiclesCard = ({ card, navId }) => {
@@ -20,8 +20,10 @@ const VehiclesCard = ({ card, navId }) => {
     const isFavorite = favorites?.some(fav => fav.id === card.id);
 
     const openModal = (id) => {
+        startTransition(() => {
+            navigate(`/catalog/${id}`, { state: { background: location } });
+        });
         dispatch(setNav(navId));
-        navigate(`/catalog/${id}/features`, { state: { background: location } });
     };
 
     return (
@@ -74,20 +76,7 @@ const VehiclesCard = ({ card, navId }) => {
                             <p>{card.description.slice(0, 64)}...</p>
                         </div>
                         <div className={css.categories}>
-                            <ul className={css.categoriesList}>
-                                {equipment.map(item => (card[item.name] &&
-                                    <li className={css.categoriesItem} key={nanoid()}>
-                                        <Icon
-                                            width="20"
-                                            height="20"
-                                            stroke='#101828'
-                                            fill={item.fill}
-                                            iconName={item.icon}
-                                        />
-                                        <p className={css.label}>{card[item.name]} {item.title}</p>
-                                    </li>
-                                ))}
-                            </ul>
+                            <Equipment card={card} />
                         </div>
                         <div>
                             <Button

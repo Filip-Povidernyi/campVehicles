@@ -1,0 +1,19 @@
+.stars {
+    position: relative;
+    width: 16px;
+    height: 16px;
+}
+
+.halfStar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.starsCont{
+    display: flex;
+    gap: 2px;
+}

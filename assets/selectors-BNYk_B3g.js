@@ -1,0 +1,1 @@
+const s=e=>e.vehicles.items,t=e=>e.vehicles.isLoading,a=e=>e.vehicles.error,c=e=>e.vehicles.perPage,l=e=>e.favorite.items,i=e=>e.details.details,o=e=>e.details.navId,r=e=>e.details.isLoading,n=e=>e.details.error;export{l as a,t as b,a as c,c as d,i as e,r as f,n as g,o as h,s};

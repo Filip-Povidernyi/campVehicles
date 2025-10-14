@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Icon from '../Icon/Icon';
 import css from './style.module.css';
 import styled from 'styled-components';
@@ -15,9 +15,11 @@ const StyledLink = styled(NavLink)`
 const Header = () => {
     return (
         <section className={css.header}>
-            <div className={css.logo}>
-                <Icon iconName='icon-logo' width="44" height="44" />
-                <h1 className={css.title}>McCamper Rent</h1>
+            <div style={{cursor: 'pointer'}}>
+                <Link to="/"  className={css.logo}>
+                    <Icon iconName='icon-logo' width="44" height="44" />
+                    <h1 className={css.title}>McCamper Rent</h1>
+                </Link>
             </div>
             <nav>
                 <StyledLink to="/">Home</StyledLink>

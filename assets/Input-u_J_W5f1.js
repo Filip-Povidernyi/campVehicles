@@ -1,1 +1,0 @@
-import{i as x,j as f}from"./index-CfSxyvqs.js";const m=x.forwardRef(({className:t,name:r,type:n,value:o,checked:s,handleChange:a,id:e,placeholder:p,...i},u)=>f.jsx("input",{ref:u,className:t,name:r,type:n,value:o,checked:s,onChange:a,id:e,placeholder:p,...i}));export{m as I};

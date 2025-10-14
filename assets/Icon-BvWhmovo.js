@@ -1,1 +1,0 @@
-import{j as s}from"./index-CfSxyvqs.js";const a="/campVehicles/assets/sprite-BbTJfG_H.svg",m=({iconName:e,width:r,height:t,stroke:o,fill:c,className:i,handleClick:n,value:p,name:x})=>s.jsx("svg",{className:i,width:r,value:p,height:t,fill:c,stroke:o,name:x,onClick:n,children:s.jsx("use",{href:`${a}#${e}`})});export{m as I};

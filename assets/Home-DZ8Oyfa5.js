@@ -1,4 +1,4 @@
-import{j as e,N as t}from"./index-CfSxyvqs.js";import{d as s}from"./styled-components.browser.esm-B2lgqns8.js";const i="_section_kired_1",r="_hero_kired_49",n="_title_kired_69",c="_description_kired_85",o={section:i,hero:r,title:n,description:c},a=s(t)`
+import{j as e,N as t}from"./index-CvGO4ASu.js";import{d as s}from"./styled-components.browser.esm-m2rGrP6L.js";const i="_section_kired_1",r="_hero_kired_49",n="_title_kired_69",c="_description_kired_85",o={section:i,hero:r,title:n,description:c},a=s(t)`
     display: flex;
     align-items: center;
     justify-content: center;

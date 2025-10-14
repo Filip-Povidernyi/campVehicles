@@ -1,0 +1,1 @@
+import{k as f,j as i}from"./index-CvGO4ASu.js";const m=f.forwardRef(({className:t,name:r,type:n,value:o,checked:s,handleChange:a,id:e,placeholder:p,...u},x)=>i.jsx("input",{ref:x,className:t,name:r,type:n,value:o,checked:s,onChange:a,id:e,placeholder:p,...u}));export{m as I};

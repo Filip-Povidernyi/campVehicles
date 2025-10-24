@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
 import Loader from "../Loader/Loader";
 
-// 🔹 Lazy imports
+
 const SharedLayout = lazy(() => import("../SharedLayout/SharedLayout"));
 const Home = lazy(() => import("../../pages/Home/Home"));
 const Catalog = lazy(() => import("../../pages/Catalog/Catalog"));
@@ -32,7 +32,7 @@ const App = () => {
           </Route>
         </Routes>
 
-        {/* 🔹 Відображення модалки поверх поточного бекґраунду */}
+        {/* Відображення модалки поверх поточного бекґраунду */}
         {state?.background && (
           <Routes>
             <Route path="catalog/:id" element={<Modal />}>
